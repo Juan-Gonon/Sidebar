@@ -9,10 +9,15 @@ export function ProviderTheme ({ children }) {
   const [theme, setTheme] = useState('light')
   const themeStyle = theme === 'light' ? Light : Dark
 
+  const changeTheme = () => {
+    setTheme((prevThem) => (prevThem === 'light' ? 'dark' : 'light'))
+  }
+
   return (
     <ThemeContext.Provider value={{
       theme,
-      setTheme
+      setTheme,
+      changeTheme
     }}
     >
       <ThemeProvider theme={themeStyle}>
