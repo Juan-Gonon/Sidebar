@@ -1,9 +1,23 @@
+import { MyRoutes } from './routers/routes'
+import styled from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
+import { Sidebar } from './components/Sidebar'
+
 function App () {
   return (
     <>
-      <h1>App</h1>
+      <BrowserRouter>
+        <Container>
+          <Sidebar />
+          <MyRoutes />
+        </Container>
+      </BrowserRouter>
     </>
   )
 }
 
 export default App
+
+const Container = styled.main`
+  
+`
