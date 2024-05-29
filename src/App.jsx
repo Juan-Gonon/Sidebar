@@ -5,7 +5,7 @@ import { Sidebar } from './components/Sidebar'
 import { useState } from 'react'
 
 function App () {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
     <>
