@@ -10,19 +10,18 @@ function App () {
   return (
     <>
       <BrowserRouter>
-        <Container>
-          <main className={`sidebarState ${sidebarOpen ? 'active' : ''}`}>
-            <Sidebar />
-            <MyRoutes />
-          </main>
+        <Container className={`sidebarState ${sidebarOpen ? 'active' : ''}`}>
+
+          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <MyRoutes />
+
         </Container>
       </BrowserRouter>
     </>
   )
 }
 
-const Container = styled.section`
-  .sidebarState{
+const Container = styled.main`
     display: grid;
     grid-template-columns: 90px auto;
     background: ${({ theme }) => theme.bgtotal};
@@ -30,7 +29,6 @@ const Container = styled.section`
     &.active{
       grid-template-columns: 300px auto;
     }
-  }
   `
 
 export default App

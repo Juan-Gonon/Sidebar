@@ -1,7 +1,16 @@
-import React from 'react'
+import styled from 'styled-components'
 
-export const Sidebar = () => {
+// eslint-disable-next-line react/prop-types
+export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   return (
-    <div>Sidebar</div>
+    <Container>
+      <div className='logo__content' />
+    </Container>
   )
 }
+
+const Container = styled.div`
+  background: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
+  position: sticky;
+`
