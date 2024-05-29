@@ -2,27 +2,35 @@ import { MyRoutes } from './routers/routes'
 import styled from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar'
-import { useContext } from 'react'
-import { ThemeContext } from './context/Context'
+import { useState } from 'react'
 
 function App () {
-  const { theme, changeTheme } = useContext(ThemeContext)
-  console.log(theme)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
   return (
     <>
       <BrowserRouter>
         <Container>
-          <Sidebar />
-          <MyRoutes />
-          <button onClick={changeTheme}>theme</button>
+          <main className={`sidebarState ${sidebarOpen ? 'active' : ''}`}>
+            <Sidebar />
+            <MyRoutes />
+          </main>
         </Container>
       </BrowserRouter>
     </>
   )
 }
 
-export default App
+const Container = styled.section`
+  .sidebarState{
+    display: grid;
+    grid-template-columns: 90px auto;
+    background: ${({ theme }) => theme.bgtotal};
 
-const Container = styled.main`
-  background-color: ${({ theme }) => theme.body};
-`
+    &.active{
+      grid-template-columns: 300px auto;
+    }
+  }
+  `
+
+export default App
