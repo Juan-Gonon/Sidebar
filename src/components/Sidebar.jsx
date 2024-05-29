@@ -5,9 +5,13 @@ import { AiOutlineLeft } from 'react-icons/ai'
 
 // eslint-disable-next-line react/prop-types
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+  const modifySidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
   return (
     <Container $isOpen={sidebarOpen}>
-      <button className='sidebar__button'>
+      <button className='sidebar__button' onClick={modifySidebar}>
         <AiOutlineLeft />
       </button>
       <div className='logo__content'>
@@ -41,6 +45,15 @@ const Container = styled.div`
     cursor: pointer;
     transition: transform .3s;
     transform: ${({ $isOpen }) => ($isOpen ? 'initial' : 'rotate(180deg)')};
+    outline: none;
+    border: none;
+    letter-spacing: inherit;
+    color: inherit;
+    color: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    padding: 0;
+    font-family: inherit;
   }
 
   .logo__content{
