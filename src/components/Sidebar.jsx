@@ -43,7 +43,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform .3s;
+    transition: transform .8s;
     transform: ${({ $isOpen }) => ($isOpen ? 'initial' : 'rotate(180deg)')};
     outline: none;
     border: none;
