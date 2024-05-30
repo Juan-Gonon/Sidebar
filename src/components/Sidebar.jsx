@@ -3,15 +3,20 @@ import logo from '../assets/react.svg'
 import { v } from '../styles/Variables'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { linksArray } from '../data/data'
-import { Link } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+  const { pathname } = useLocation()
+  const isActive = location.pathname
+
+  console.log({ pathname, isActive })
+
   const modifySidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
-  console.log('hola')
+  console.log(pathname)
 
   return (
     <Container $isOpen={sidebarOpen}>
@@ -27,14 +32,14 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       {
         linksArray.map((item, index) => (
           <div key={index} className='link__container'>
-            <Link to={item.to} className='links'>
+            <NavLink to={item.to} className={`links ${({ isActive }) => (`ln-${isActive ? 'active' : ''}`)}`}>
               <div className='link__icon'>
                 {item.icon}
               </div>
               {
                 sidebarOpen && (<span>{item.label}</span>)
               }
-            </Link>
+            </NavLink>
           </div>
         ))
       }
@@ -112,6 +117,7 @@ const Container = styled.div`
       align-items: center;
       text-decoration: none;
       padding: calc(${v.smSpacing}-2px) 0;
+      color: ${({ theme }) => theme.text};
 
       .link__icon{
         padding: ${v.smSpacing} ${v.mdSpacing};
@@ -120,6 +126,15 @@ const Container = styled.div`
         svg{
           font-size: 25px;
         }
+      }
+
+      &.active{
+        .link__icon{
+          svg{
+            color: ${({ theme }) => theme.bg4};
+          }
+        }
+
       }
     }
   }
