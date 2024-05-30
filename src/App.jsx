@@ -2,17 +2,18 @@ import { MyRoutes } from './routers/routes'
 import styled from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar'
-import { useState } from 'react'
+import { ThemeContext } from './context/Context'
+import { useContext } from 'react'
 
 function App () {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const { sidebarOpen } = useContext(ThemeContext)
 
   return (
     <>
       <BrowserRouter>
         <Container className={`sidebarState ${sidebarOpen ? 'active' : ''}`}>
 
-          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <Sidebar />
           <MyRoutes />
 
         </Container>

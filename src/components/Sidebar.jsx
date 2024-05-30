@@ -3,23 +3,17 @@ import logo from '../assets/react.svg'
 import { v } from '../styles/Variables'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { linksArray, secondaryLinksArray } from '../data/data'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { ThemeContext } from '../context/Context'
 
 // eslint-disable-next-line react/prop-types
-export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
-  const { pathname } = useLocation()
-  const isActive = location.pathname
-  const { changeTheme, theme } = useContext(ThemeContext)
-
-  console.log({ pathname, isActive })
+export const Sidebar = () => {
+  const { changeTheme, theme, sidebarOpen, setSidebarOpen } = useContext(ThemeContext)
 
   const modifySidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
-
-  console.log(pathname)
 
   return (
     <Container $isOpen={sidebarOpen} $themeUse={theme}>

@@ -7,6 +7,7 @@ export const ThemeContext = createContext()
 // eslint-disable-next-line react/prop-types
 export function ProviderTheme ({ children }) {
   const [theme, setTheme] = useState('light')
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const themeStyle = theme === 'light' ? Light : Dark
 
   const changeTheme = () => {
@@ -16,8 +17,9 @@ export function ProviderTheme ({ children }) {
   return (
     <ThemeContext.Provider value={{
       theme,
-      setTheme,
-      changeTheme
+      changeTheme,
+      sidebarOpen,
+      setSidebarOpen
     }}
     >
       <ThemeProvider theme={themeStyle}>
