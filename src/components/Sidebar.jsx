@@ -11,7 +11,7 @@ import { ThemeContext } from '../context/Context'
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const { pathname } = useLocation()
   const isActive = location.pathname
-  const { changeTheme } = useContext(ThemeContext)
+  const { changeTheme, theme } = useContext(ThemeContext)
 
   console.log({ pathname, isActive })
 
@@ -22,7 +22,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   console.log(pathname)
 
   return (
-    <Container $isOpen={sidebarOpen}>
+    <Container $isOpen={sidebarOpen} $themeUse={theme}>
       <button className='sidebar__button' onClick={modifySidebar}>
         <AiOutlineLeft />
       </button>
@@ -63,7 +63,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       }
       <Divider />
       <div className='theme__content'>
-        {sidebarOpen && <span>Dark mode</span>}
+        {sidebarOpen && <span className='title__theme'>Dark mode</span>}
         <section className='toggle__content'>
           <article className='grid theme-container'>
             <div className='content'>
@@ -118,7 +118,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding-bottom: ${v.lgSpacing};
-    background: aqua;
+    /* background: aqua; */
 
     .img__content{
       display: flex;
@@ -178,10 +178,14 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     
-    & span{
+    .title__theme{
       display: block;
       padding: 10px;
       font-weight: 700;
+      opacity: ${({ $isOpen }) => $isOpen ? '1' : '0'};
+      transition: all .3s;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .toggle__content{
@@ -239,7 +243,7 @@ const Container = styled.div`
               position: absolute;
               cursor: pointer;
               inset: 0;
-              background: ${v.checkbox};
+              background: ${({ $themeUse }) => $themeUse === 'light' ? v.lightcheckbox : v.checkbox};
               transition: all .4s;
 
               &::before{
