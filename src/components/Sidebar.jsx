@@ -70,7 +70,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <div className='demo'>
                 <label htmlFor='' className='switch'>
                   <input onClick={changeTheme} type='checkbox' className='theme-switch' />
-                  <span className='slider-round' />
+                  <span className='slider round' />
                 </label>
               </div>
             </div>
@@ -170,6 +170,82 @@ const Container = styled.div`
         }
 
       }
+    }
+  }
+
+  .theme__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    & span{
+      display: block;
+      padding: 10px;
+      font-weight: 700;
+    }
+
+    .toggle__content{
+      margin: ${({ $isOpen }) => $isOpen ? 'auto 40px' : 'auto 15px'};
+      background: aqua;
+      width: 36px;
+      height: 20px;
+      border-radius: 10px;
+      transition: all .3s;
+      position: relative;
+
+      .theme-container{
+        background-blend-mode: multiply, multiply;
+        transition: all.4s;
+
+        .grid{
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        font-family: 'Lato', sans-serif;
+      }
+
+        .demo{
+          font-size: 32px;
+
+          .switch{
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+
+            .theme-switch{
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+
+            .slider{
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: ${v.checkbox};
+              transition: all.4s;
+
+              &::before{
+                position: absolute;
+                content: '☀️';
+                height: 0;
+                width: 0;
+              }
+            }
+
+          }
+
+        }
+
+      }
+
+   
     }
   }
 `
