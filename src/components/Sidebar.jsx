@@ -68,8 +68,8 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           <article className='grid theme-container'>
             <div className='content'>
               <div className='demo'>
-                <label htmlFor='' className='switch'>
-                  <input onClick={changeTheme} type='checkbox' className='theme-switch' />
+                <label htmlFor='toggle-click' className='switch'>
+                  <input id='toggle-click' onClick={changeTheme} type='checkbox' className='theme-switch' />
                   <span className='slider round' />
                 </label>
               </div>
@@ -186,7 +186,7 @@ const Container = styled.div`
 
     .toggle__content{
       margin: ${({ $isOpen }) => $isOpen ? 'auto 40px' : 'auto 15px'};
-      background: aqua;
+      /* background: aqua; */
       width: 36px;
       height: 20px;
       border-radius: 10px;
@@ -197,14 +197,14 @@ const Container = styled.div`
         background-blend-mode: multiply, multiply;
         transition: all.4s;
 
-        .grid{
+        /* &.grid{
         display: grid;
         justify-items: center;
         align-items: center;
         height: 100vh;
         width: 100vw;
         font-family: 'Lato', sans-serif;
-      }
+      } */
 
         .demo{
           font-size: 32px;
@@ -216,26 +216,49 @@ const Container = styled.div`
             height: 34px;
 
             .theme-switch{
-              opacity: 0;
-              width: 0;
-              height: 0;
+              position: absolute;
+              opacity: 1;
+              width: 0px;
+              height: 0px;
+              z-index: 20;
+
+              &:checked {
+                ~ {
+                  .slider{
+                    &::before{
+                      left: 4px;
+                      content: "🌑";
+                      transform: translateX(26px);
+                    }
+                  }
+                }
+              }
             }
 
             .slider{
               position: absolute;
               cursor: pointer;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
+              inset: 0;
               background: ${v.checkbox};
-              transition: all.4s;
+              transition: all .4s;
 
               &::before{
                 position: absolute;
                 content: '☀️';
                 height: 0;
                 width: 0;
+                left: -10px;
+                top: 16px;
+                line-height: 0px ;
+                transition: .4s;
+                z-index: 1;
+              }
+
+              &.round{
+                border-radius: 34px;
+                &::before{
+                  border-radius: 50%;
+                }
               }
             }
 
