@@ -4,11 +4,14 @@ import { v } from '../styles/Variables'
 import { AiOutlineLeft } from 'react-icons/ai'
 import { linksArray, secondaryLinksArray } from '../data/data'
 import { NavLink, useLocation } from 'react-router-dom'
+import { useContext } from 'react'
+import { ThemeContext } from '../context/Context'
 
 // eslint-disable-next-line react/prop-types
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const { pathname } = useLocation()
   const isActive = location.pathname
+  const { changeTheme } = useContext(ThemeContext)
 
   console.log({ pathname, isActive })
 
@@ -59,6 +62,21 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         ))
       }
       <Divider />
+      <div className='theme__content'>
+        {sidebarOpen && <span>Dark mode</span>}
+        <section className='toggle__content'>
+          <article className='grid theme-container'>
+            <div className='content'>
+              <div className='demo'>
+                <label htmlFor='' className='switch'>
+                  <input onClick={changeTheme} type='checkbox' className='theme-switch' />
+                  <span className='slider-round' />
+                </label>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
     </Container>
   )
 }

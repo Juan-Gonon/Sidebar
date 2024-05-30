@@ -1,7 +1,15 @@
-import React from 'react'
+import styled from 'styled-components'
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <Container>
+
+      <div>Home</div>
+    </Container>
   )
 }
+
+const Container = styled.section`
+  min-height: 100vh;
+  height: 100%;
+`
