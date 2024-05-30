@@ -22,12 +22,12 @@ export const linksArray = [
   {
     label: 'Diagramas',
     icon: <LiaProjectDiagramSolid />,
-    to: '/productos'
+    to: '/diagramas'
   },
   {
     label: 'Reportes',
     icon: <TbReportSearch />,
-    to: '/productos'
+    to: '/reportes'
   }
 
 ]

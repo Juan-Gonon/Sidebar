@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom'
 import { Home } from '../pages/Home'
 import { Estadisticas } from '../pages/Estadisticas'
 import { Productos } from '../pages/Productos'
+import { Diagramas } from '../pages/Diagramas'
+import { Reportes } from '../pages/Reportes'
 
 export const MyRoutes = () => {
   return (
@@ -9,6 +11,8 @@ export const MyRoutes = () => {
       <Route path='/' element={<Home />} />
       <Route path='/productos' element={<Productos />} />
       <Route path='/estadisticas' element={<Estadisticas />} />
+      <Route path='/diagramas' element={<Diagramas />} />
+      <Route path='/reportes' element={<Reportes />} />
     </Routes>
   )
 }
