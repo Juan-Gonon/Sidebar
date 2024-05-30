@@ -11,6 +11,8 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     setSidebarOpen(!sidebarOpen)
   }
 
+  console.log('hola')
+
   return (
     <Container $isOpen={sidebarOpen}>
       <button className='sidebar__button' onClick={modifySidebar}>
@@ -103,6 +105,22 @@ const Container = styled.div`
 
     &:hover{
       background: ${({ theme }) => theme.bg3};
+    }
+
+    .links{
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      padding: calc(${v.smSpacing}-2px) 0;
+
+      .link__icon{
+        padding: ${v.smSpacing} ${v.mdSpacing};
+        display: flex;
+
+        svg{
+          font-size: 25px;
+        }
+      }
     }
   }
 `
