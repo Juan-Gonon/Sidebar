@@ -26,6 +26,7 @@ const Container = styled.main`
     grid-template-columns: 90px auto;
     background: ${({ theme }) => theme.bgtotal};
     transition: grid-template-columns .35s;
+    color: ${({ theme }) => theme.text};
 
     &.active{
       grid-template-columns: 300px auto;

@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const Home = () => {
   return (
     <Container>
-
-      <div>Home</div>
+      <h1>Home</h1>
     </Container>
   )
 }
