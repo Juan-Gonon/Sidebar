@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import logo from '../assets/react.svg'
 import { v } from '../styles/Variables'
 import { AiOutlineLeft } from 'react-icons/ai'
+import { linksArray } from '../data/data'
+import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -20,6 +22,20 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         </div>
         <h2>Gonon's</h2>
       </div>
+      {
+        linksArray.map((item, index) => (
+          <div key={index} className='link__container'>
+            <Link to={item.to} className='links'>
+              <div className='link__icon'>
+                {item.icon}
+              </div>
+              {
+                sidebarOpen && (<span>{item.label}</span>)
+              }
+            </Link>
+          </div>
+        ))
+      }
     </Container>
   )
 }
@@ -78,6 +94,15 @@ const Container = styled.div`
 
     & h2{
       display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+    }
+  }
+
+  .link__container{
+    margin: 8px 0;
+    padding: 0 15%;
+
+    &:hover{
+      background: ${({ theme }) => theme.bg3};
     }
   }
 `
