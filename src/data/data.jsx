@@ -1,7 +1,8 @@
 import { AiOutlineHome, AiOutlineApartment } from 'react-icons/ai'
-import { MdOutlineAnalytics } from 'react-icons/md'
+import { MdOutlineAnalytics, MdLogout } from 'react-icons/md'
 import { TbReportSearch } from 'react-icons/tb'
 import { LiaProjectDiagramSolid } from 'react-icons/lia'
+import { CiSettings } from 'react-icons/ci'
 
 export const linksArray = [
   {
@@ -28,6 +29,20 @@ export const linksArray = [
     label: 'Reportes',
     icon: <TbReportSearch />,
     to: '/reportes'
+  }
+
+]
+
+export const secondaryLinksArray = [
+  {
+    label: 'Configuraciones',
+    icon: <CiSettings />,
+    to: '/settings'
+  },
+  {
+    label: 'Salir',
+    icon: <MdLogout />,
+    to: '/out'
   }
 
 ]

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import logo from '../assets/react.svg'
 import { v } from '../styles/Variables'
 import { AiOutlineLeft } from 'react-icons/ai'
-import { linksArray } from '../data/data'
+import { linksArray, secondaryLinksArray } from '../data/data'
 import { NavLink, useLocation } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
@@ -43,6 +43,22 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </div>
         ))
       }
+      <Divider />
+      {
+        secondaryLinksArray.map((item, index) => (
+          <div key={index} className='link__container'>
+            <NavLink to={item.to} className={`links ${({ isActive }) => (`ln-${isActive ? 'active' : ''}`)}`}>
+              <div className='link__icon'>
+                {item.icon}
+              </div>
+              {
+                sidebarOpen && (<span>{item.label}</span>)
+              }
+            </NavLink>
+          </div>
+        ))
+      }
+      <Divider />
     </Container>
   )
 }
@@ -138,4 +154,11 @@ const Container = styled.div`
       }
     }
   }
+`
+
+const Divider = styled.div`
+  height: 1px;
+  width: 100%;
+  background: ${({ theme }) => theme.bg3};
+  margin: ${v.lgSpacing} 0;
 `
